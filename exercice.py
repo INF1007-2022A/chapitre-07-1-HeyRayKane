@@ -3,7 +3,7 @@
 
 # TODO: Importez vos modules ici
 import math
-import turtle
+from turtle import *
 
 # TODO: Définissez vos fonction ici
 
@@ -34,7 +34,36 @@ def ellipsoide(a=2,b=3,c=4,p=10):
     return round(V,2),round(V*p,2)
 
 def arbre():
-    return None
+    begin_fill()
+    fd(50)
+    end_fill()
+    done()
+
+def valide(saisie):
+    if len(saisie) == 0:
+        return False
+    compteur = 0
+    for i in saisie:
+        if i == "a" or "t" or "g" or "c":
+            compteur+=1
+    return compteur == len(saisie)
+
+def saisie(type):
+    value = input(f"Entrez une {type} valide:\n")
+
+    if valide(value):
+        return value
+
+    print(f"La {type} rentrée n'est pas valide.")
+    return saisie(type)
+
+def proportion_chaine_ADN(chaine,sequence):
+    a=chaine.split(sequence)
+    string = str()
+    for i in a:
+        string+=i
+    return chaine,sequence,1 - len(string)/len(chaine)
+
 
 if __name__ == '__main__':
     # TODO: Appelez vos fonctions ici
@@ -43,4 +72,5 @@ if __name__ == '__main__':
     Volume, masse = ellipsoide(5,4,3,10)
     print(f"Le volume de l'ellipsoide est de {Volume} et sa masse est de {masse}.")
     print(f"Le volume de l'ellipsoide initial est de {ellipsoide()[0]} et sa masse est de {ellipsoide()[1]}.")
-    turtle.right(15)
+    chaine,sequence,proportion = proportion_chaine_ADN(saisie("chaine"), saisie("sequence"))
+    print(f"chaîne : {chaine}\nséquence : {sequence}\nIl y a {round(proportion*100,2)} % de {str(sequence)}.")
