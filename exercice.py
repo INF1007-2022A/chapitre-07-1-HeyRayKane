@@ -44,4 +44,3 @@ if __name__ == '__main__':
     print(f"Le volume de l'ellipsoide est de {Volume} et sa masse est de {masse}.")
     print(f"Le volume de l'ellipsoide initial est de {ellipsoide()[0]} et sa masse est de {ellipsoide()[1]}.")
     turtle.right(15)
-    
